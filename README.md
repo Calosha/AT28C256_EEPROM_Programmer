@@ -10,3 +10,7 @@ Physically the programmer was build on a 5x7 cm prototyping board. With all addr
 The connections are as follows:
 
 ### Pictures
+![IMG_5254](https://github.com/user-attachments/assets/9bf1a01c-dc04-4eea-81e0-fb3c717c173a)
+![IMG_5201](https://github.com/user-attachments/assets/68d43b7f-3256-40c3-8b09-4e684e87eca6)
+![IMG_5256](https://github.com/user-attachments/assets/6ea304b2-9421-4532-9459-ff62fc29092c)
+
