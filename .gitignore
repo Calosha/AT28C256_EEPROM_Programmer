@@ -1,0 +1,8 @@
+*.hex
+*.elf
+*.bin
+*.o
+*.d
+*.log
+*.pyc
+*.DS_Store
