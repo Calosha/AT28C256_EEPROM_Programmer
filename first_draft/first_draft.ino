@@ -12,43 +12,42 @@ void setup() {
 }
 
 void loop() {
-    uint8_t data = 0b10101010;
-    uint16_t address = 0x00;
-    programmer.writeByte(address, data);
-    uint8_t result = programmer.readByte(address);
-    Serial.print("Address: ");
-    Serial.println(address, HEX);
-    Serial.print("byte from programmer: ");
-    Serial.println(result, BIN);
-    delay(5);
-    data = 0b10101011;
-    address = 0x01;
-    programmer.writeByte(address, data);
-    uint8_t result1 = programmer.readByte(address);
-    Serial.print("Address: ");
-    Serial.println(address, HEX);
-    Serial.print("byte from programmer: ");
-    Serial.println(result1, BIN);
-    delay(2000);
-    address = 0x02;
-    
-    uint8_t data2 = 0b10011000;
-    programmer.writeByte(address, data2);
+      // write first 32 addresses 0x00 to 0x1F
+      uint16_t address = 0;
+      uint8_t data = 0;
+      for (int i = 0; i < 32; i++) {
+        Serial.print("Address: ");
+        Serial.println(address, HEX);
+        Serial.print("Writing byte to ROM: ");
+        Serial.println(data, BIN);
+        programmer.writeByte(address, data);
+        address++;
+        data++;
+      }
 
-
-
-    uint8_t result2 = programmer.readByte(address);
-    Serial.print("Address: ");
-    Serial.println(address, HEX);
-    Serial.print("byte from programmer: ");
-    Serial.println(result2, BIN);
-    delay(2000);
-    uint8_t result3 = programmer.readByte(address);
-    Serial.print("Address: ");
-    Serial.println(address, HEX);
-    Serial.print("byte from programmer: ");
-    Serial.println(result3, BIN);
-
+    delay(10);
+    Serial.println("~~~~~~~~~~~~~~~~~~~~");
+    Serial.println("Validating data:");
+    // verify the data
+    address = 0;
+    data = 0;
+    uint8_t result = 0b00000000;
+    for (int i = 0; i < 32; i++) {
+        
+        result = programmer.readByte(address);
+        Serial.print("ROM data at address: ");
+        Serial.print(address, HEX);
+        Serial.print(" is: ");
+        Serial.print(result, BIN);
+        Serial.print(" (Expected: ");
+        Serial.print(data, BIN);
+        Serial.println(")");
+        if (result != data) {
+          Serial.println("INVALID DATA!");
+        }
+        address++;
+        data++;
+    }
     while(1);
 }
 
