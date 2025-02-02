@@ -8,6 +8,20 @@ Physically the programmer was build on a 5x7 cm prototyping board. With all addr
 
 ### Connections
 The connections are as follows:
+- Arduino Nano Every
+
+| EEPROM Pin | Arduino Pin |
+|------------|-------------|
+| I/O0       | D2          |
+| I/O1       | D3          |
+| I/O2       | D4          |
+| I/O3       | D5          |
+| I/O4       | D6          |
+| I/O5       | D7          |
+| I/O6       | D8          |
+| I/O7       | D9          |
+
+
 
 ### Pictures
 ![IMG_5254](https://github.com/user-attachments/assets/9bf1a01c-dc04-4eea-81e0-fb3c717c173a)
