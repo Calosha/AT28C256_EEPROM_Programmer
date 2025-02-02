@@ -30,11 +30,11 @@ The connections are as follows:
 ![IMG_5256](https://github.com/user-attachments/assets/6ea304b2-9421-4532-9459-ff62fc29092c)
 
 ## Parts List
-- Arduino Nano Every x1
-- (74HC595 Shift Register)[https://www.mouser.com/ProductDetail/595-SN74HC595NE4] x2
-- (AT28C256 EEPROM)[https://www.mouser.com/ProductDetail/556-AT28C25615PU] x1
-- (0.1uF Ceramic Capacitors)[https://www.mouser.com/ProductDetail/594-K104K15X7RF5UH5] x2
-- (10uF Electrolytic Capacitor)[https://www.mouser.com/ProductDetail/80-ESK106M050AC3DA] x1
-- (Prototyping Kit)[https://www.amazon.com/Miuzei-Including-Prototype-Connector-Terminal/dp/B07PS4VCDD] x1
-- (Jumper Wires)[https://www.amazon.com/dp/B08DCK6HCC] x1
-- push-down resistor - cheap chineese 10kOhm resistor x2
+- Arduino Nano Every x1  
+- [74HC595 Shift Register](https://www.mouser.com/ProductDetail/595-SN74HC595NE4) x2  
+- [AT28C256 EEPROM](https://www.mouser.com/ProductDetail/556-AT28C25615PU) x1  
+- [0.1uF Ceramic Capacitors](https://www.mouser.com/ProductDetail/594-K104K15X7RF5UH5) x2  
+- [10uF Electrolytic Capacitor](https://www.mouser.com/ProductDetail/80-ESK106M050AC3DA) x1  
+- [Prototyping Kit](https://www.amazon.com/Miuzei-Including-Prototype-Connector-Terminal/dp/B07PS4VCDD) x1  
+- [Jumper Wires](https://www.amazon.com/dp/B08DCK6HCC) x1  
+- Push-down resistor - cheap Chinese 10kΩ resistor x2  
