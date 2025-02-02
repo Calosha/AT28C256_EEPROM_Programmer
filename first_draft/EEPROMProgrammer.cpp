@@ -32,16 +32,8 @@ void EEPROMProgrammer::setDataPinsMode(uint8_t mode) {
 }
 
 void EEPROMProgrammer::writeByte(uint16_t address, uint8_t data) {
-  //Prepere address on both shift registers
-  uint8_t lowByte = address & 0xFF;         // get bottom 8 bits
-  uint8_t highByte = (address >> 8) & 0x7F; // get top 7 bits
-
-  // Send data to shift registers
-  digitalWrite(SHIFT_LATCH, LOW);  // prepare to receive data
-  ::shiftOut(SHIFT_DATA, SHIFT_CLK, MSBFIRST, highByte);  // send high byte
-  ::shiftOut(SHIFT_DATA, SHIFT_CLK, MSBFIRST, lowByte);   // send low byte
-  digitalWrite(SHIFT_LATCH, HIGH); // latch the data
-
+  
+  this->setAddress(address);
   // 1. Set programmer into wrtire mode
   this->writeEnable();
 
@@ -63,16 +55,8 @@ uint8_t EEPROMProgrammer::readByte(uint16_t address) {
   
   delayMicroseconds(5); // Let signals stabilize (critical!)
   //Prepere address on both shift registers
-  uint8_t lowByte = address & 0xFF;         // get bottom 8 bits
-  uint8_t highByte = (address >> 8) & 0x7F; // get top 7 bits
-
-  // Send data to shift registers
-  digitalWrite(SHIFT_LATCH, LOW);  // prepare to receive data
-  ::shiftOut(SHIFT_DATA, SHIFT_CLK, MSBFIRST, highByte);  // send high byte
-  ::shiftOut(SHIFT_DATA, SHIFT_CLK, MSBFIRST, lowByte);   // send low byte
-  digitalWrite(SHIFT_LATCH, HIGH); // latch the data
-
-  // Reading data (correct for D2 = I/O0, D9 = I/O7)
+  
+  this->setAddress(address);
   uint8_t data = 0;
   for (int i = 0; i < 8; i++) {
     data |= (digitalRead(DATA_PINS[i]) << i); // LSB first
@@ -99,7 +83,6 @@ void EEPROMProgrammer::writeEnable() {
   digitalWrite(OE_PIN, HIGH);  // Disable output
 
   // set data as output
-  // TODO: put me into function:
   this->setDataPinsMode(OUTPUT);
 
 }
@@ -108,5 +91,17 @@ void EEPROMProgrammer::readEnable() {
   digitalWrite(WE_PIN, HIGH);  // Ensure WE is HIGH during reads
   digitalWrite(CE_PIN, LOW);   // Enable chip
   digitalWrite(OE_PIN, LOW);   // Enable output
-  this->setDataPinsMode(INPUT);      // Data pins as inputs
+  this->setDataPinsMode(INPUT); // Data pins as inputs
+}
+
+void EEPROMProgrammer::setAddress(uint16_t address) {
+  //Prepere address on both shift registers
+  uint8_t lowByte = address & 0xFF;         // get bottom 8 bits
+  uint8_t highByte = (address >> 8) & 0x7F; // get top 7 bits
+
+  // Send data to shift registers
+  digitalWrite(SHIFT_LATCH, LOW);  // prepare to receive data
+  ::shiftOut(SHIFT_DATA, SHIFT_CLK, MSBFIRST, highByte);  // send high byte
+  ::shiftOut(SHIFT_DATA, SHIFT_CLK, MSBFIRST, lowByte);   // send low byte
+  digitalWrite(SHIFT_LATCH, HIGH); // latch the data
 }
