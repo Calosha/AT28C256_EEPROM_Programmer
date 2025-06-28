@@ -3,17 +3,20 @@
 
 // Pin definitions for the shift register
 #define SHIFT_LATCH_PIN 10
-#define SHIFT_DATA_PIN  11
-#define SHIFT_CLOCK_PIN 13
+#define SHIFT_DATA_PIN 17
+#define SHIFT_CLK_PIN 19
 
 // Pin definitions for AT28C256 EEPROM
 // Control
-#define ROM_CE 14 // Chip Enable 
-#define ROM_OE 15 // Output Enable
-#define ROM_WE 16 // Write Enable
+#define CE_PIN 14  // Chip Enable
+#define OE_PIN 15  // Output Enable
+#define WE_PIN 16  // Write Enable
 
-// Data
-const int ROM_DATA_PINS[8] = {2,3,4,5,6,7,8,9};
+// Pin definitions for SD card reader
+#define SD_CS_PIN 18
 
-#endif // CONFIG_H
-// TODO: Pick either const or preprocessor. Or maybe both are fine?
+// Data pins
+static const int DATA_PINS[8] = {2, 3, 4, 5, 6, 7, 8, 9};
+
+#define ROM_SIZE 32768 // Using size instead of last address to be able to put > (strictly less)
+#endif  // CONFIG_H
